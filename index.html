@@ -1,29 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>کپی شماره کارت</title>
+<style>
+body {
+  font-family: "Vazirmatn", sans-serif;
+  background-color: #f7f9fc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+button {
+  background-color: #00a884;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover { background-color: #008f73; }
+p { color: #333; margin-top: 20px; }
+</style>
 </head>
-<body style="font-family:Tahoma,Arial, sans-serif;direction:rtl;text-align:center;padding:40px;">
-  <h2>برای کپی شماره کارت، روی دکمه بزن</h2>
-  <p id="msg" style="color:green;margin:12px 0;"></p>
-  <button id="copyBtn" style="font-size:18px;padding:12px 20px;cursor:pointer;border-radius:8px;">
-    کپی شماره کارت
-  </button>
+<body>
 
-  <script>
-    const cardNumber = "5892-1016-4864-5659"; // 
-    document.getElementById("copyBtn").addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(cardNumber);
-        document.getElementById("msg").textContent = "شماره کارت کپی شد ✅";
-        // اگر می‌خواهی بعد از 1.2 ثانیه برگرده به Taplink، این خط را فعال کن:
-        // setTimeout(() => { window.location.href = "https://rezachaji.taplink.ws"; }, 1200);
-      } catch (e) {
-        document.getElementById("msg").textContent = "کپی نشد — لطفا متن را دستی کپی کنید.";
-      }
-    });
-  </script>
+<h2>برای کپی شماره کارت، روی دکمه بزن 💳</h2>
+<button id="copyBtn">کپی شماره کارت</button>
+<p id="status"></p>
+
+<script>
+document.getElementById("copyBtn").addEventListener("click", function() {
+  const cardNumber = "5892-1016-4864-5659"; // 👈 شماره کارتت
+  navigator.clipboard.writeText(cardNumber).then(() => {
+    const status = document.getElementById("status");
+    status.textContent = "✅ شماره کارت کپی شد!";
+    setTimeout(() => {
+    window.location.href = "https://rezachaji.taplink.ws "); // 👈 لینک تپلینکت
+    }, 1200); // بعد از ۱.۲ ثانیه برمیگرده
+  }).catch(() => {
+    alert("کپی نشد 😕 لطفاً دستی کپی کنید.");
+  });
+});
+</script>
+
 </body>
 </html>
