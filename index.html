@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>کپی شماره کارت</title>
+</head>
+<body style="font-family:Tahoma,Arial, sans-serif;direction:rtl;text-align:center;padding:40px;">
+  <h2>برای کپی شماره کارت، روی دکمه بزن</h2>
+  <p id="msg" style="color:green;margin:12px 0;"></p>
+  <button id="copyBtn" style="font-size:18px;padding:12px 20px;cursor:pointer;border-radius:8px;">
+    کپی شماره کارت
+  </button>
+
+  <script>
+    const cardNumber = "5892-1016-4864-5659"; // 
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(cardNumber);
+        document.getElementById("msg").textContent = "شماره کارت کپی شد ✅";
+        // اگر می‌خواهی بعد از 1.2 ثانیه برگرده به Taplink، این خط را فعال کن:
+        // setTimeout(() => { window.location.href = "https://rezachaji.taplink.ws"; }, 1200);
+      } catch (e) {
+        document.getElementById("msg").textContent = "کپی نشد — لطفا متن را دستی کپی کنید.";
+      }
+    });
+  </script>
+</body>
+</html>
