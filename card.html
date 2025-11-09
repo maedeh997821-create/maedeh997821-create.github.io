@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کپی شماره کارت</title>
+<style>
+body {
+  font-family: "Vazirmatn", sans-serif;
+  background-color: #f7f9fc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+button {
+  background-color: #00a884;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover { background-color: #008f73; }
+p { color: #333; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<h2>برای کپی شماره کارت، روی دکمه بزن 💳</h2>
+<button id="copyBtn">کپی شماره کارت</button>
+<p id="status"></p>
+
+<script>
+document.getElementById("copyBtn").addEventListener("click", function() {
+  const cardNumber = "5892-1016-4864-5659"; // 👈 شماره کارتت
+  navigator.clipboard.writeText(cardNumber).then(() => {
+    const status = document.getElementById("status");
+    status.textContent = "✅ شماره کارت کپی شد!";
+    setTimeout(() => {
+    window.location.href = "https://rezachaji.taplink.ws "); // 👈 لینک تپلینکت
+    }, 1200); // بعد از ۱.۲ ثانیه برمیگرده
+  }).catch(() => {
+    alert("کپی نشد 😕 لطفاً دستی کپی کنید.");
+  });
+});
+</script>
+
+</body>
+</html>
